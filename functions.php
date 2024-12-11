@@ -130,6 +130,28 @@
             'label' => __('Navbar Color', 'custom-theme'),
             'section' => 'colors',
         )));
+
+        // Donate Button Color
+        $wp_customize->add_setting('donate_button_color', array(
+            'default' => '#6FC3C0',
+            'transport' => 'postMessage',
+        ));
+
+        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'donate_button_color', array(
+            'label' => __('Donate Button Color', 'custom-theme'),
+            'section' => 'colors',
+        )));
+
+        // Donate Button Hover Color
+        $wp_customize->add_setting('donate_button_hover_color', array(
+            'default' => '#1d2b54',
+            'transport' => 'postMessage',
+        ));
+
+        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'donate_button_hover_color', array(
+            'label' => __('Donate Button Hover Color', 'custom-theme'),
+            'section' => 'colors',
+        )));
     }
 
     add_action('customize_register', 'custom_theme_customize_register');
@@ -144,6 +166,9 @@
             'fontFamilyBody' => get_theme_mod('font_family_body', 'Open Sans'),
             'mobileMenu' => get_theme_mod('mobile_menu_color', '#ffffff'),
             'navbarColor' => get_theme_mod('navbar_color', '#ffffff'),
+            'donateButtonColor' => get_theme_mod('donate_button_color', '#6FC3C0'),
+            'donateButtonHoverColor' => get_theme_mod('donate_button_hover_color', '#1d2b54'),
+
         );
 
         return rest_ensure_response($settings);
